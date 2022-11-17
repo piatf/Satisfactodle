@@ -1,7 +1,11 @@
 #include <iostream>
 
+#include "Parser.hpp"
+#include "Parser.cpp"
+
 int main()
 {
-    std::cout << "Hello world!" << std::endl;
+    Parser p;
+    std::cout << p.getFirstDisplayNameItem() << std::endl;
     return 0;
 }
