@@ -5,7 +5,7 @@
 
 class Parser
 {
-    std::fstream dbStream;
+    // std::fstream dbStream;
 
 public:
     Parser();
