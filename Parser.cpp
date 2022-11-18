@@ -38,6 +38,6 @@ std::string Parser::getFirstDisplayNameItem()
 
 std::string Parser::getRecipe()
 {
-    // TODO
+    // TODO : Parse item recipe
     return "";
 }
