@@ -9,6 +9,7 @@ using json = nlohmann::json;
 Parser::Parser()
 {
     this->dbStream.open("database.json");
+    assert(json::accept(dbStream));
 }
 
 std::string Parser::getFirstDisplayNameItem()
