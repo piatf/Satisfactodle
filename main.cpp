@@ -1,8 +1,6 @@
 #include <iostream>
 
 #include "Parser.hpp"
-// TODO : Create CMake files / build folder
-#include "Parser.cpp"
 
 int main()
 {

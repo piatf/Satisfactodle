@@ -1,5 +1,9 @@
 Build command: 
-    g++ -fdiagnostics-color=always -g main.cpp -o main.exe
+    [in Project Directory]
+    cmake --build ./build --config Debug --target Satisfactodle -j 6 --
+
+If build/ is removed :
+    VsCode => CMAKE extensions => Project outline => "More actions..." => Configure all projects
 
 Find database under : 
     path/to/Satisfactory/CommunityResources/Docs
