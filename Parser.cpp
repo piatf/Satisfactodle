@@ -15,7 +15,10 @@ Parser::Parser()
 std::string Parser::getFirstDisplayNameItem()
 {
     json allItems = j_complete.items().begin().value().at("Classes");
-    std::string nameItemStr = allItems.begin().value().at("mDisplayName");
+    auto randIt = allItems.begin();
+    std::advance(randIt, std::rand() % allItems.size());
+    std::string nameItemStr = randIt.value().at("mDisplayName");
+
     return nameItemStr.empty() ? throw std::invalid_argument("No Item found. Check file format, content and encoding")
                                : nameItemStr;
 }

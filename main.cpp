@@ -6,7 +6,11 @@ int main()
 {
     Parser p;
     // TODO : Look for a way to add GUI
-    // TODO : Choose game item randomly
+
+    srand(time(NULL));
+    std::cout << p.getFirstDisplayNameItem() << std::endl;
+    std::cout << p.getFirstDisplayNameItem() << std::endl;
+    std::cout << p.getFirstDisplayNameItem() << std::endl;
     std::cout << p.getFirstDisplayNameItem() << std::endl;
     return 0;
 }
