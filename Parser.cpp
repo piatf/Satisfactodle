@@ -8,30 +8,18 @@ using json = nlohmann::json;
 
 Parser::Parser()
 {
-    this->dbStream.open("database.json");
-    assert(json::accept(dbStream));
+    // TODO : Make a database auto-finder in user file system
 }
 
 std::string Parser::getFirstDisplayNameItem()
 {
-    std::string nameItemStr;
-    // std::string tmpBuff{};
-    // std::ifstream dbStream("./database.json");
-    // json j = json::parse(dbStream);
-    // std::string line;
-    // return j.at("ClassName");
+    dbStream.open("D:/Documents/DEV/Sandbox/Satisfactodle/database.json");
 
-    // for (std::string tmpBuff; std::getline(dbStream, tmpBuff);)
-    // {
-    //     tmpBuff.erase(remove(tmpBuff.begin(), tmpBuff.end(), '\"'), tmpBuff.end());
-    //     // std::cout << tmpBuff << std::endl;
-    //     if (tmpBuff.find("mDisplayName") != std::string::npos)
-    //     {
-    //         return tmpBuff;
-    //     }
-    // }
+    json j_complete = json::parse(dbStream);
+    dbStream.close();
 
-    // return "";
+    json object = j_complete.items().begin().value();
+    std::string nameItemStr = object.at("NativeClass");
     return nameItemStr.empty() ? throw std::invalid_argument("No Item found. Check file format, content and encoding")
                                : nameItemStr;
 }
