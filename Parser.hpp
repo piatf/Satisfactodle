@@ -11,8 +11,8 @@ class Parser
 
 public:
     Parser();
-    std::string getFirstDisplayNameItem();
-    std::string getRecipe();
+    std::string getRandomItem() const;
+    std::string getRecipeIngredients(const std::string item) const;
 
 private:
     json j_complete;

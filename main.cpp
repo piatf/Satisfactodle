@@ -8,9 +8,14 @@ int main()
     // TODO : Look for a way to add GUI
 
     srand(time(NULL));
-    std::cout << p.getFirstDisplayNameItem() << std::endl;
-    std::cout << p.getFirstDisplayNameItem() << std::endl;
-    std::cout << p.getFirstDisplayNameItem() << std::endl;
-    std::cout << p.getFirstDisplayNameItem() << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        auto item = p.getRandomItem();
+        std::cout << item << std::endl
+                  << "Recipe : " << p.getRecipeIngredients(item) << std::endl;
+        std::cout << std::endl;
+    }
+
     return 0;
 }

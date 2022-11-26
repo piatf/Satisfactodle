@@ -12,19 +12,28 @@ Parser::Parser()
     dbStream.close();
 }
 
-std::string Parser::getFirstDisplayNameItem()
+std::string Parser::getRandomItem() const
 {
-    json allItems = j_complete.items().begin().value().at("Classes");
+    const json allItems = j_complete.items().begin().value().at("Classes");
     auto randIt = allItems.begin();
     std::advance(randIt, std::rand() % allItems.size());
-    std::string nameItemStr = randIt.value().at("mDisplayName");
+    std::string item = randIt.value().at("mDisplayName");
 
-    return nameItemStr.empty() ? throw std::invalid_argument("No Item found. Check file format, content and encoding")
-                               : nameItemStr;
+    return item.empty() ? throw std::invalid_argument("No Item found. Check file format, content and encoding")
+                        : item;
 }
 
-std::string Parser::getRecipe()
+std::string Parser::getRecipeIngredients(const std::string item) const
 {
-    // TODO : Parse item recipe
+    const json allRecipes = j_complete.at(2).at("Classes");
+    for (const auto &recipe : allRecipes.items())
+    {
+        if (recipe.value().at("mDisplayName") == item)
+        {
+            // TODO : make recipe readable
+            return recipe.value().at("mIngredients");
+        }
+    }
+    // TODO : handle no recipe case (e.g. Blue Power Slug)
     return "";
 }
