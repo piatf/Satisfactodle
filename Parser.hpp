@@ -15,5 +15,9 @@ public:
     std::string getRecipeIngredients(const std::string item) const;
 
 private:
+    const json getClassesFromIdx(const uint8_t idx) const;
+
     json j_complete;
+    uint8_t itemsIdx{0};
+    uint8_t recipesIdx{2};
 };
