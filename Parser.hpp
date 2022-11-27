@@ -12,7 +12,7 @@ class Parser
 public:
     Parser();
     std::string getRandomItem() const;
-    std::string getRecipeIngredients(const std::string item) const;
+    std::string getFullRecipe(const std::string item) const;
 
 private:
     const json getClassesFromIdx(const uint8_t idx) const;

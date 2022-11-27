@@ -1,5 +1,5 @@
 #include "Parser.hpp"
-#include "Recipe.hpp"
+#include "RecipeParser.hpp"
 #include <iostream>
 #include <algorithm>
 #include <sstream>
@@ -30,16 +30,18 @@ std::string Parser::getRandomItem() const
                         : item;
 }
 
-std::string Parser::getRecipeIngredients(const std::string item) const
+// FullRecipe = Item + ingredients
+std::string Parser::getFullRecipe(const std::string item) const
 {
     const json allRecipes = getClassesFromIdx(recipesIdx);
     for (const auto &recipe : allRecipes.items())
     {
         if (recipe.value().at("mDisplayName") == item)
         {
-            Recipe itemRecipe(recipe.value().at("mIngredients"));
-            // TODO : make recipe readable
-            return itemRecipe.getRawRecipe();
+            // RecipeParser recipeParser(recipe.value().at("mIngredients"));
+            // // TODO : make recipe readable
+            // return recipeParser.getRecipe();
+            return recipe.value().at("mIngredients");
         }
     }
     // TODO : handle no recipe case (e.g. Blue Power Slug)

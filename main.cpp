@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Parser.hpp"
+#include "RecipeParser.hpp"
 
 int main()
 {
@@ -13,9 +14,28 @@ int main()
     {
         auto item = p.getRandomItem();
         std::cout << item << std::endl
-                  << "Recipe : " << p.getRecipeIngredients(item) << std::endl;
+                  << "Recipe : " << p.getFullRecipe(item) << std::endl;
         std::cout << std::endl;
     }
 
+    RecipeParser rp{""};
+    std::stringstream res;
+    if (not rp.TestParseOneIngredientRecipe())
+    {
+        res << "UT#1 FAILED" << std::endl;
+    }
+    if (not rp.TestParseFullRecipe())
+    {
+        res << "UT#2 FAILED" << std::endl;
+    };
+
+    if (res.str() == "")
+    {
+        std::cout << "All UT passed" << std::endl;
+    }
+    else
+    {
+        std::cout << res.str();
+    }
     return 0;
 }
