@@ -1,4 +1,5 @@
 #include "Parser.hpp"
+#include "Recipe.hpp"
 #include <iostream>
 #include <algorithm>
 #include <sstream>
@@ -8,7 +9,7 @@ Parser::Parser()
     std::ifstream dbStream;
     // TODO : Make a database auto-finder in user file system
     dbStream.open("D:/Documents/DEV/Sandbox/Satisfactodle/database.json");
-    this->j_complete = json::parse(dbStream);
+    this->j_complete = json::parse(dbStream); // Input file must be UTF-8 encoded
     dbStream.close();
 }
 
@@ -36,8 +37,9 @@ std::string Parser::getRecipeIngredients(const std::string item) const
     {
         if (recipe.value().at("mDisplayName") == item)
         {
+            Recipe itemRecipe(recipe.value().at("mIngredients"));
             // TODO : make recipe readable
-            return recipe.value().at("mIngredients");
+            return itemRecipe.getRawRecipe();
         }
     }
     // TODO : handle no recipe case (e.g. Blue Power Slug)
