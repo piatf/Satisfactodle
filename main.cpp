@@ -15,26 +15,30 @@ int main()
         std::string item, fullRecipe;
         do
         {
+            item.clear();
+            fullRecipe.clear();
             item = p.getRandomItem();
             fullRecipe = p.getFullRecipe(item);
-        } while (fullRecipe.empty());
+        } while (fullRecipe.empty() or (item.find("FICSMAS") != std::string::npos));
+        // TODO : remove FICSMAS condition when it is Xmas time IRL
 
         std::cout << fullRecipe << std::endl
                   << std::endl;
     }
 
+    //////////////// UNIT TESTS ////////////////
     RecipeParser rp{""};
     std::stringstream res;
     if (not rp.TestParseOneIngredientRecipe())
     {
-        res << "UT#1 FAILED" << std::endl;
+        res << "FAILED UT TestParseOneIngredientRecipe " << std::endl;
     }
     if (not rp.TestParseFullRecipe())
     {
-        res << "UT#2 FAILED" << std::endl;
+        res << "FAILED UT TestParseOneIngredientRecipe" << std::endl;
     };
 
-    if (res.str() == "")
+    if (res.str().empty())
     {
         std::cout << "All UT passed" << std::endl;
     }

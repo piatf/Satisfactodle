@@ -32,7 +32,12 @@ std::string Parser::getRandomItem() const
 
 std::string Parser::getFullRecipe(const std::string item) const
 {
-    return item + "\n" + getAllIngredients(item);
+    std::string allIngredients = getAllIngredients(item);
+    if (allIngredients.empty())
+    {
+        return "";
+    }
+    return item + "\n" + allIngredients;
 }
 
 std::string Parser::getAllIngredients(const std::string item) const
