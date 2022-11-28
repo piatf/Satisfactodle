@@ -12,9 +12,15 @@ int main()
 
     for (int i = 0; i < 5; i++)
     {
-        auto item = p.getRandomItem();
+        std::string item, fullRecipe;
+        do
+        {
+            item = p.getRandomItem();
+            fullRecipe = p.getFullRecipe(item);
+        } while (fullRecipe.empty());
+
         std::cout << item << std::endl
-                  << "Recipe : " << p.getFullRecipe(item) << std::endl;
+                  << "Recipe : " << fullRecipe << std::endl;
         std::cout << std::endl;
     }
 
