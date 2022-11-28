@@ -7,5 +7,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(Satisfactodle)
 
-set(SRCS main.cpp Parser.cpp)
+set(SRCS main.cpp Parser.cpp RecipeParser.cpp)
 add_executable(Satisfactodle ${SRCS})
