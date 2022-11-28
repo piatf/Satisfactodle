@@ -19,9 +19,8 @@ int main()
             fullRecipe = p.getFullRecipe(item);
         } while (fullRecipe.empty());
 
-        std::cout << item << std::endl
-                  << "Recipe : " << fullRecipe << std::endl;
-        std::cout << std::endl;
+        std::cout << fullRecipe << std::endl
+                  << std::endl;
     }
 
     RecipeParser rp{""};

@@ -30,8 +30,12 @@ std::string Parser::getRandomItem() const
                         : item;
 }
 
-// FullRecipe = Item + ingredients
 std::string Parser::getFullRecipe(const std::string item) const
+{
+    return item + "\n" + getAllIngredients(item);
+}
+
+std::string Parser::getAllIngredients(const std::string item) const
 {
     const json allRecipes = getClassesFromIdx(recipesIdx);
     for (const auto &recipe : allRecipes.items())
@@ -44,6 +48,5 @@ std::string Parser::getFullRecipe(const std::string item) const
             return recipe.value().at("mIngredients");
         }
     }
-    // TODO : handle no recipe case (e.g. Blue Power Slug)
     return "";
 }
